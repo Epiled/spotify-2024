@@ -1,10 +1,12 @@
+import Fonts from "./Fonts";
 import ResetCSS from "./ResetCSS";
 import Variaveis from "./Variaveis";
 
 const EstilosGlobais: React.FC = () => {
   return <>
-    <ResetCSS />
+    <Fonts />
     <Variaveis />
+    <ResetCSS />
   </>;
 }
 

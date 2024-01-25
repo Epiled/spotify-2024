@@ -31,7 +31,7 @@ const ResetCSS: React.FC = createGlobalStyle`
     display: block;
   }
   body {
-    line-height: 1;
+    //line-height: 1;
   }
   ol, ul {
     list-style: none;
@@ -48,8 +48,12 @@ const ResetCSS: React.FC = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  a {
+    color: inherit;
+  }
   * {
     font-size: 62.5%;
+    font-family: CircularSp;
     box-sizing: border-box;
   }
 `

@@ -1,10 +1,13 @@
 import styled from "styled-components";
-import Menu from '../components/Menu'
+import Menu from '../components/Sidebar'
 
 const Base = styled.div`
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr auto;
+  align-content: flex-start;
   background: var(--darker);
   padding: .8rem;
-  display: grid;
   min-height: 100vh;
 `
 
