@@ -66,6 +66,7 @@ const Secoes: React.FC = () => {
   const [artistas, setArtistas] = useState<IArtist[] | undefined>()
   const [playlists, setPlaylists] = useState<IPlaylist[] | undefined>()
   const [columns, setColumns] = useState(0);
+  const [boasVindas, setBoasVindas] = useState('')
 
   // Context
   const { termoBusca } = useBusca()
@@ -113,7 +114,6 @@ const Secoes: React.FC = () => {
     const resizeObserver = new ResizeObserver(() => {
       if (elemento) {
         const elementoWidth = elemento.getBoundingClientRect().width
-        console.log(elementoWidth)
         const numberColumns = Math.floor(elementoWidth / 200)
         const gap = 24
         const gaspWidth = numberColumns * gap
@@ -132,9 +132,20 @@ const Secoes: React.FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const currentHour = new Date().getHours()
+    const messageGreetings = currentHour >= 5 && currentHour < 12
+      ? "Bom dia"
+      : currentHour >= 12 && currentHour < 18
+      ? "Boa tarde"
+      : "Boa noite";
+
+      setBoasVindas(messageGreetings)
+  }, [])
+
   return (
     <SecoesEstilizado>
-      <Mensagem>Boa Tarde</Mensagem>
+      <Mensagem>{boasVindas}</Mensagem>
       <Titulo>Navegar por todas as seções</Titulo>
 
       <ContainerWrapper>
