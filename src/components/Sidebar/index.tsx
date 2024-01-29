@@ -1,25 +1,15 @@
 import { styled } from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faSearch, faBook, faPlus, faGlobe } from '@fortawesome/free-solid-svg-icons'
-import logoImagem from '/assets/imgs/icons/logo-spotify.png'
 import { Link } from "react-router-dom";
-import Extras from "./Extras";
 import Box from "./Box";
+import Extras from "./Extras";
+import logoImagem from '/assets/imgs/icons/logo-spotify.png'
+import IBoxSpace from "interfaces/IBoxSpace";
+import IFlex from "interfaces/IFlex";
+import ILinkItem from "interfaces/ILikeItem";
 
-interface IPadding extends IContainer {
-  pt?: string;
-  pr?: string;
-  pb?: string;
-  pl?: string;
-}
-
-interface IContainer {
-  flex?: string | number;
-}
-
-interface ILinkItem {
-  height?: string;
-}
+interface ISideBarContainer extends IBoxSpace, IFlex {}
 
 const Barra = styled.div`
   display: flex;
@@ -27,18 +17,18 @@ const Barra = styled.div`
   gap: .8rem;
 `
 
-const Container = styled.nav<IPadding>`
+const Container = styled.nav<ISideBarContainer>`
   display: flex;
   flex-direction: column;
   background-color: var(--color-gray-darker-1);
   border-radius: .8rem;
-  padding-top: ${(props) => (props.pt ? props.pt : '2rem')};
-  padding-right: ${(props) => (props.pr ? props.pr : '2.4rem')};
-  padding-bottom: ${(props) => (props.pb ? props.pb : '1.2rem')};
-  padding-left: ${(props) => (props.pl ? props.pl : '2.4rem')};
+  padding-top: ${(props) => (props.$pt ? props.$pt : '2rem')};
+  padding-right: ${(props) => (props.$pr ? props.$pr : '2.4rem')};
+  padding-bottom: ${(props) => (props.$pb ? props.$pb : '1.2rem')};
+  padding-left: ${(props) => (props.$pl ? props.$pl : '2.4rem')};
   gap: 1.2rem;
   max-width: 42rem;
-  flex: ${(props) => (props.flex ? props.flex : 'initial')};;
+  flex: ${(props) => (props.$flex ? props.$flex : 'initial')};
 `
 
 const Logo = styled.img`
@@ -71,7 +61,7 @@ const Icon = styled(FontAwesomeIcon)`
   color: var(--color-gray-lighter-1);
 `
 
-const LinkItem = styled(Link) <ILinkItem>`
+const LinkItem = styled(Link)<ILinkItem>`
   color: var(--color-gray-lighter-1);
   font: inherit;
   display: flex;
@@ -161,7 +151,7 @@ const SideBar: React.FC = () => {
         </Lista>
       </Container>
 
-      <Container flex={1} pt={'.8rem'} pr={'.8rem'} pb={'3.2rem'} pl={'.8rem'}>
+      <Container $flex={1} $pt={'.8rem'} $pr={'.8rem'} $pb={'3.2rem'} $pl={'.8rem'}>
         <ListaAlt>
           <ItemLista>
             <LinkItemBiblioteca to={'/'}>
@@ -192,7 +182,7 @@ const SideBar: React.FC = () => {
           titulo={'Que tal seguir um podcast novo?'}
           texto={'Avisaremos você sobre novos episódios.'}
           botao={'Explore podcasts'}
-          mt={'1.2rem'}
+          $mt={'1.2rem'}
         />
 
         <ExtrasWrapper>

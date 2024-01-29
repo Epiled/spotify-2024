@@ -1,21 +1,13 @@
+import IBox from "interfaces/IBox";
+import IBoxSpace from "interfaces/IBoxSpace";
 import { styled } from "styled-components";
 
-interface IBox extends IMargin {
-  titulo: string,
-  texto: string,
-  botao: string,
-}
-
-interface IMargin {
-  mt?: string,
-}
-
-const BoxEstilizado = styled.div<IMargin>`
+const BoxEstilizado = styled.div<IBoxSpace>`
   color: var(--lighter);
   background: var(--color-gray-darker-2);
   border-radius: .8rem;
   padding: 1.6rem 2rem;
-  margin-top: ${(props) => (props.mt ? props.mt : '0rem')};
+  margin-top: ${(props) => (props.$mt ? props.$mt : '0rem')};
 `
 
 const Titulo = styled.h2`
@@ -44,9 +36,9 @@ const Botao = styled.button`
   }
 `
 
-const Box: React.FC<IBox> = ({titulo, texto, botao, mt}) => {
+const Box: React.FC<IBox> = ({titulo, texto, botao, $mt}) => {
   return (
-    <BoxEstilizado mt={mt}>
+    <BoxEstilizado $mt={$mt}>
       <Titulo>
         {titulo}
       </Titulo>
