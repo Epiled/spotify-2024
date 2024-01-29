@@ -2,9 +2,7 @@ import IArtist from "interfaces/IArtist"
 import styled from "styled-components"
 
 const Box = styled.div`
-  background: var();
   flex: 1;
-  color: var();
   border-radius: .8rem;
   padding: 1.6rem;
   background: var(--bg-album);
@@ -22,7 +20,7 @@ const Imagem = styled.img`
   box-shadow: 0 .8rem 2.4rem var(--shadow);
 `
 
-const Artista = styled.h3`
+const ArtistaEstilizado = styled.h3`
   font-size: 1.6rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -35,13 +33,13 @@ const Genero = styled.h4`
   color: var(--color-gray-lighter-2);
 `
 
-const Album: React.FC<IArtist> = ({ urlImg, name, genre }) => {
+const Artista: React.FC<IArtist> = ({ urlImg, name, genre }) => {
   return (
     <Box>
       <Imagem src={urlImg} alt={`${name} - ${genre}`} />
-      <Artista>
+      <ArtistaEstilizado>
         {name}
-      </Artista>
+      </ArtistaEstilizado>
       <Genero>
         {genre}
       </Genero>
@@ -50,4 +48,4 @@ const Album: React.FC<IArtist> = ({ urlImg, name, genre }) => {
   )
 }
 
-export default Album
+export default Artista

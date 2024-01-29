@@ -56,6 +56,9 @@ const ResetCSS: React.FC = createGlobalStyle`
     font-family: CircularSp;
     box-sizing: border-box;
   }
+  .hidden {
+    display: none;
+  }
 `
 
 export default ResetCSS;

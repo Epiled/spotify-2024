@@ -1,7 +1,12 @@
 import styled from "styled-components"
-import { useEffect, useState } from "react"
-import Album from "../../components/Album/Album"
+import { useCallback, useEffect, useRef, useState } from "react"
+import Artista from "../Artista"
 import IArtist from "interfaces/IArtist"
+import { useBusca } from "../../context/BuscaContext"
+import Album from "../Album"
+import IPlaylist from "interfaces/IPlaylist"
+import useDadosPlaylist from "../../hooks/usePlaylist"
+import useDadosArtist from "../../hooks/useArtist"
 
 const SecoesEstilizado = styled.section`
   background: var(--bg-header);
@@ -32,7 +37,7 @@ const ContainerWrapper = styled.div`
   position: relative;
 `
 
-const ListaAlbuns = styled.div`
+const ListaAlbuns = styled.div<{ $colunas: number }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -42,33 +47,89 @@ const ListaAlbuns = styled.div`
   gap: 2.4rem;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
-  grid-template-rows: auto;
+  grid-template-columns: repeat(${(props) => props.$colunas}, minmax(20rem, 1fr));
   align-content: flex-start;
 
   &::-webkit-scrollbar {
     width: 0;
   }
 `
-const localhost = window.location.origin;
+
+const NadaEncontrado = styled.h3`
+  font-size: 2rem;
+  grid-column: 1 / span 3;
+`
 
 const Secoes: React.FC = () => {
 
-  const [albuns, setAlbuns] = useState<IArtist[] | undefined>();
+  // States
+  const [artistas, setArtistas] = useState<IArtist[] | undefined>()
+  const [playlists, setPlaylists] = useState<IPlaylist[] | undefined>()
+  const [columns, setColumns] = useState(0);
+
+  // Context
+  const { termoBusca } = useBusca()
+
+  // Refs
+  const ref = useRef<HTMLDivElement>(null)
+  const albunsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Dados API
+  const { dados: artistasLista } = useDadosArtist({ parametro: termoBusca })
+  const { dados: playlistLista } = useDadosPlaylist()
+
+  // Funções auxilares/handles
+  const hiddenAlbuns = useCallback(() => {
+    albunsRef.current.forEach((album) => {
+      album?.classList.toggle('hidden', termoBusca !== "");
+    });
+  }, [termoBusca])
+
+  const handleRef = () => {
+    return ref.current
+  }
+
+  const handleAllRef = (el: HTMLDivElement | null, index: number) => {
+    // Armazenar a referência na posição correta
+    albunsRef.current[index] = el;
+  }
+
+  // useEffects 
+  useEffect(() => {
+    if (artistasLista) {
+      hiddenAlbuns()
+    }
+  }, [termoBusca, artistasLista, hiddenAlbuns]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${localhost}/db/playlist.json`)
-        const albunsLista = await res.json();
-        setAlbuns(albunsLista.artists);
-        console.log(albuns)
-      } catch (error) {
-        console.log('Erro ao buscar dados:', error);
-      }
-    };
+    playlistLista ? setPlaylists(playlistLista) : ''
+    artistasLista ? setArtistas(artistasLista) : ''
 
-    fetchData()
+  }, [playlistLista, artistasLista]);
+
+  useEffect(() => {
+    const elemento = handleRef()
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (elemento) {
+        const elementoWidth = elemento.getBoundingClientRect().width
+        console.log(elementoWidth)
+        const numberColumns = Math.floor(elementoWidth / 200)
+        const gap = 24
+        const gaspWidth = numberColumns * gap
+        const numberColumnsGap = Math.floor((elementoWidth - gaspWidth) / 200)
+        setColumns(numberColumnsGap)
+      }
+    })
+
+    if (elemento) {
+      resizeObserver.observe(elemento)
+    }
+
+    return () => {
+      // Limpar o observador quando o componente for desmontado
+      resizeObserver.disconnect()
+    }
   }, [])
 
   return (
@@ -78,13 +139,25 @@ const Secoes: React.FC = () => {
 
       <ContainerWrapper>
 
-        <ListaAlbuns>
-          {albuns?.map(album => {
-            console.log(album);
+        <ListaAlbuns $colunas={columns} ref={ref}>
+          {playlists?.map((album, index) => {
             return (
-              <Album key={album.id} {...album} />
+              <Album
+                innerRef={(el) => handleAllRef(el, index)}
+                key={index}
+                {...album}
+              />
             )
           })}
+
+          {termoBusca && termoBusca.length != 0 ? (
+            artistasLista?.length === 0 ? (
+              <NadaEncontrado>Nada encontrado para o termo de busca {termoBusca}.</NadaEncontrado>
+            ) : (
+              artistas?.map(album => <Artista key={album.id} {...album} />)
+            )
+          ) : ''}
+
         </ListaAlbuns>
 
       </ContainerWrapper>

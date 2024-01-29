@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from "react-router-dom";
+import { useBusca } from "../../context/BuscaContext";
 
 const Icon = styled(FontAwesomeIcon)`
   color: var(--color-gray-lighter-2);
@@ -101,18 +102,29 @@ const LinkCadastro = styled(LinkLogin)`
 `
 
 const BarraSuperior: React.FC = () => {
+  const { termoBusca, setTermoBusca } = useBusca();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTermoBusca(event?.target.value)
+  };
+
   return (
     <Cabecalho>
-        <Botao>
-          <Icon icon={faChevronLeft} />
-        </Botao>
-        <Botao>
-          <Icon icon={faChevronRight} />
-        </Botao>
+      <Botao>
+        <Icon icon={faChevronLeft} />
+      </Botao>
+      <Botao>
+        <Icon icon={faChevronRight} />
+      </Botao>
 
       <ContainerBusca>
         <IconSearch icon={faSearch} />
-        <CampoBusca type="search" placeholder="O que você quer ouvir?" />
+        <CampoBusca
+          type="search"
+          placeholder="O que você quer ouvir?"
+          value={termoBusca}
+          onChange={handleChange}
+        />
       </ContainerBusca>
 
       <LinksContainer>
