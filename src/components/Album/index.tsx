@@ -15,7 +15,7 @@ const Imagem = styled.img`
   will-change: transform, width, height;
 `
 
-const Box = styled.div<{ $bg : string}>`
+const Box = styled.div<{ $bg: string }>`
   position: relative;
   background: ${(props) => props.$bg};
   border-radius: .8rem;
@@ -48,7 +48,7 @@ const Categoria = styled.h3`
   z-index: 1;
 `
 
-const Album: React.FC<IPlaylist & {innerRef?: (el: HTMLDivElement | null) => void;}> = ({ categoria, capa, cor, innerRef }) => {
+const Album: React.FC<IPlaylist & { innerRef?: (el: HTMLDivElement | null) => void; }> = ({ categoria, capa, cor, innerRef }) => {
   return (
     <Box ref={innerRef} data-filtrado={false} $bg={cor}>
       <Categoria>
