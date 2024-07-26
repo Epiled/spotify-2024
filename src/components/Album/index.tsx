@@ -48,9 +48,9 @@ const Categoria = styled.h3`
   z-index: 1;
 `
 
-const Album: React.FC<IPlaylist & { innerRef?: (el: HTMLDivElement | null) => void; }> = ({ categoria, capa, cor, innerRef }) => {
+const Album: React.FC<IPlaylist & { innerRef?: (el: HTMLDivElement | null) => void; } & { onClick: () => void;}> = ({ categoria, capa, cor, innerRef, onClick }) => {
   return (
-    <Box ref={innerRef} data-filtrado={false} $bg={cor}>
+    <Box ref={innerRef} data-filtrado={false} $bg={cor} onClick={onClick}>
       <Categoria>
         {categoria}
       </Categoria>

@@ -16,9 +16,13 @@ const Base = styled.div`
 const Container = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
-  grid-template-columns: auto 1fr;
   column-gap: 0.8rem;
   row-gap: 0.8rem;
+
+  @media screen and (min-width: 1368px) {
+    grid-template-rows: 1fr auto;
+    grid-template-columns: auto 1fr;
+  }
 `
 
 const Principal = styled.main`

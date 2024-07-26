@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faChevronRight, faChevronLeft, faBars, faClose } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from "react-router-dom";
 import { useBusca } from "../../context/BuscaContext";
+import { useRef, useState } from "react";
+import { useDrawer } from "../../context/DrawerContext";
 
 const Icon = styled(FontAwesomeIcon)`
   color: var(--color-gray-lighter-2);
@@ -16,11 +18,16 @@ const Icon = styled(FontAwesomeIcon)`
 
 const Cabecalho = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   background: var(--bg-header);
   padding: .8rem 2.4rem;
   border-radius: .8rem .8rem 0 0;
   gap: .8rem;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+  }
 `
 
 const Botao = styled.button`
@@ -42,17 +49,23 @@ const Botao = styled.button`
   }
 `
 
-const ContainerBusca = styled.form`
-  position: relative;
-  display: flex;
-  flex: 0 1 36.4rem;
-`
-
 const IconSearch = styled(Icon)`
   position: absolute;
   top: 50%;
   left: 1.2rem;
   transform: translateY(-50%);
+`
+
+const ContainerBusca = styled.form`
+  position: relative;
+  display: flex;
+  flex: 0 1 36.4rem;
+
+  &:focus, &:target, &:active, &:hover {
+    ${Icon} {
+      color: var(--lighter);
+    }
+  }
 `
 
 const CampoBusca = styled.input`
@@ -67,6 +80,7 @@ const CampoBusca = styled.input`
   &:hover {
     background: var(--bg-input-hover);
   }
+
 `
 
 const LinksContainer = styled.div`
@@ -79,7 +93,7 @@ const LinkLogin = styled(Link)`
   background: var(--lighter);
   border-radius: 5rem;
   color: var(--darker);
-  padding: .8rem 3.2rem;
+  padding: .8rem 1.6rem;
   font-size: 1.6rem;
   text-decoration: none;
   font-weight: 700;
@@ -90,19 +104,62 @@ const LinkLogin = styled(Link)`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media screen and (min-width: 768px) {
+    padding: .8rem 3.2rem;
+  }
 `
 
 const LinkCadastro = styled(LinkLogin)`
   background: transparent;
   color: var(--color-gray-lighter-2);
+  padding: .8rem 1.2rem;
+
 
   &:hover {
     color: var(--lighter);
   }
 `
 
+const MenuButton = styled(LinkLogin).attrs({ as: "button" })`
+  padding: .8rem;
+  border: 0;
+  margin-left: 1rem;
+  aspect-ratio: 1 / 1;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  transition: background .5s;
+  
+  @media screen and (min-width: 1368px) {
+    display: none;
+  }
+
+  &:hover {
+    background: var(--lighter);
+
+    ${Icon} {
+      stroke: var(--darker);
+      color: var(--darker);
+    }
+  }
+  `
+
+const IconMenu = styled(Icon).attrs({ icon: faBars })``
+const IconClose = styled(Icon).attrs({ icon: faClose })``
+
+const CabecalhoTop = styled.div`
+  display: flex;
+  gap: .8rem;
+  flex: 1;
+`
+
 const BarraSuperior: React.FC = () => {
+  const ref = useRef(null);
   const { termoBusca, setTermoBusca } = useBusca();
+  const { toggleDrawer } = useDrawer();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTermoBusca(event?.target.value)
@@ -110,22 +167,24 @@ const BarraSuperior: React.FC = () => {
 
   return (
     <Cabecalho>
-      <Botao>
-        <Icon icon={faChevronLeft} />
-      </Botao>
-      <Botao>
-        <Icon icon={faChevronRight} />
-      </Botao>
+      <CabecalhoTop>
+        <Botao>
+          <Icon icon={faChevronLeft} />
+        </Botao>
+        <Botao>
+          <Icon icon={faChevronRight} />
+        </Botao>
 
-      <ContainerBusca>
-        <IconSearch icon={faSearch} />
-        <CampoBusca
-          type="search"
-          placeholder="O que você quer ouvir?"
-          value={termoBusca}
-          onChange={handleChange}
-        />
-      </ContainerBusca>
+        <ContainerBusca>
+          <IconSearch icon={faSearch} />
+          <CampoBusca
+            type="search"
+            placeholder="O que você quer ouvir?"
+            value={termoBusca}
+            onChange={handleChange}
+          />
+        </ContainerBusca>
+      </CabecalhoTop>
 
       <LinksContainer>
         <LinkCadastro to={'/'}>
@@ -134,6 +193,13 @@ const BarraSuperior: React.FC = () => {
         <LinkLogin to={'/'}>
           Entrar
         </LinkLogin>
+        <MenuButton to={'/'} ref={ref} onClick={() => {
+          toggleDrawer()
+          setIsOpen(!isOpen)
+        }}>
+          {!isOpen && <IconMenu icon={faBars} />}
+          {isOpen && <IconClose icon={faClose} />}
+        </MenuButton>
       </LinksContainer>
     </Cabecalho>
   )

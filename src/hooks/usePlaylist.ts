@@ -5,4 +5,4 @@ const useDadosPlaylist = () => {
   return useFetch<IPlaylist[]>({ url: "playlist" });
 };
 
-export default useDadosPlaylist;
+export {useDadosPlaylist};

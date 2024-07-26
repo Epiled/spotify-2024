@@ -5,8 +5,8 @@ import IArtist from "interfaces/IArtist"
 import { useBusca } from "../../context/BuscaContext"
 import Album from "../Album"
 import IPlaylist from "interfaces/IPlaylist"
-import useDadosPlaylist from "../../hooks/usePlaylist"
-import useDadosArtist from "../../hooks/useArtist"
+import { useDadosPlaylist } from "../../hooks/usePlaylist"
+import { useDadosArtist, useDadosArtistTheme } from "../../hooks/useArtist"
 
 const SecoesEstilizado = styled.section`
   background: var(--bg-header);
@@ -17,11 +17,16 @@ const SecoesEstilizado = styled.section`
   flex-direction: column;
   font-weight: 700;
   padding: 4rem 2.4rem .8rem 2.4rem;
-  background-image: linear-gradient(var(--color-gray-darker-2) 0,var(--color-gray-darker-1) 40%);
+  background-image: linear-gradient(var(--color-gray-darker-2) 0, var(--color-gray-darker-1) 40%);
 `
 
 const Mensagem = styled.span`
   font-size: 4rem;
+`
+
+const ContainerTitulo = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
 
 const Titulo = styled.h2`
@@ -60,6 +65,20 @@ const NadaEncontrado = styled.h3`
   grid-column: 1 / span 3;
 `
 
+const BtnBack = styled.button`
+  align-self: center;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  border-radius: 5rem;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`
+
 const Secoes: React.FC = () => {
 
   // States
@@ -67,9 +86,10 @@ const Secoes: React.FC = () => {
   const [playlists, setPlaylists] = useState<IPlaylist[] | undefined>()
   const [columns, setColumns] = useState(0);
   const [boasVindas, setBoasVindas] = useState('')
+  const [thema, setThema] = useState('');
 
   // Context
-  const { termoBusca } = useBusca()
+  const { termoBusca, setTermoBusca } = useBusca()
 
   // Refs
   const ref = useRef<HTMLDivElement>(null)
@@ -78,13 +98,14 @@ const Secoes: React.FC = () => {
   // Dados API
   const { dados: artistasLista } = useDadosArtist({ parametro: termoBusca })
   const { dados: playlistLista } = useDadosPlaylist()
+  const { dados: artistasListaTheme } = useDadosArtistTheme({ parametro: thema })
 
   // Funções auxilares/handles
   const hiddenAlbuns = useCallback(() => {
     albunsRef.current.forEach((album) => {
-      album?.classList.toggle('hidden', termoBusca !== "");
+      album?.classList.toggle('hidden', ((termoBusca || thema) !== ""));
     });
-  }, [termoBusca])
+  }, [termoBusca, thema])
 
   const handleRef = () => {
     return ref.current
@@ -100,12 +121,11 @@ const Secoes: React.FC = () => {
     if (artistasLista) {
       hiddenAlbuns()
     }
-  }, [termoBusca, artistasLista, hiddenAlbuns]);
+  }, [termoBusca, artistasLista, thema, hiddenAlbuns]);
 
   useEffect(() => {
-    playlistLista ? setPlaylists(playlistLista) : ''
-    artistasLista ? setArtistas(artistasLista) : ''
-
+    if (playlistLista) setPlaylists(playlistLista)
+    if (artistasLista) setArtistas(artistasLista)
   }, [playlistLista, artistasLista]);
 
   useEffect(() => {
@@ -137,16 +157,34 @@ const Secoes: React.FC = () => {
     const messageGreetings = currentHour >= 5 && currentHour < 12
       ? "Bom dia"
       : currentHour >= 12 && currentHour < 18
-      ? "Boa tarde"
-      : "Boa noite";
+        ? "Boa tarde"
+        : "Boa noite";
 
-      setBoasVindas(messageGreetings)
+    setBoasVindas(messageGreetings)
   }, [])
+
+  useEffect(() => {
+    if (thema && artistasListaTheme) {
+      setArtistas(artistasListaTheme)
+    }
+  }, [thema, artistasListaTheme]);
+
+  useEffect(() => {
+    if (termoBusca === '') {
+      setThema('');
+    }
+  }, [termoBusca]);
 
   return (
     <SecoesEstilizado>
       <Mensagem>{boasVindas}</Mensagem>
-      <Titulo>Navegar por todas as seções</Titulo>
+      <ContainerTitulo>
+        <Titulo>Navegar por todas as seções {termoBusca}.</Titulo>
+        {(termoBusca || thema) && <BtnBack onClick={() => {
+          setThema('')
+          setTermoBusca('')
+        }}>Voltar</BtnBack>}
+      </ContainerTitulo>
 
       <ContainerWrapper>
 
@@ -154,6 +192,9 @@ const Secoes: React.FC = () => {
           {playlists?.map((album, index) => {
             return (
               <Album
+                onClick={() => {
+                  setThema(album.categoria)
+                }}
                 innerRef={(el) => handleAllRef(el, index)}
                 key={index}
                 {...album}
@@ -161,9 +202,9 @@ const Secoes: React.FC = () => {
             )
           })}
 
-          {termoBusca && termoBusca.length != 0 ? (
-            artistasLista?.length === 0 ? (
-              <NadaEncontrado>Nada encontrado para o termo de busca {termoBusca}.</NadaEncontrado>
+          {(termoBusca || thema) ? (
+            artistas?.length === 0 ? (
+              <NadaEncontrado>Nada encontrado para o termo de busca</NadaEncontrado>
             ) : (
               artistas?.map(album => <Artista key={album.id} {...album} />)
             )

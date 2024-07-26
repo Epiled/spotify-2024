@@ -8,13 +8,28 @@ import logoImagem from '/assets/imgs/icons/logo-spotify.png'
 import IBoxSpace from "interfaces/IBoxSpace";
 import IFlex from "interfaces/IFlex";
 import ILinkItem from "interfaces/ILikeItem";
+import { useDrawer } from "../../context/DrawerContext";
 
 interface ISideBarContainer extends IBoxSpace, IFlex {}
 
-const Barra = styled.div`
+const Barra = styled.div<{open: boolean}>`
   display: flex;
   flex-direction: column;
   gap: .8rem;
+  position: absolute;
+  z-index: 2;
+  height: calc(100% - 1.6rem);
+  left: ${props => props.open ? ".8rem" : "-42rem"};
+  transition: left .5s;
+  width: 75%;
+  max-width: 42rem;
+
+  @media screen and (min-width: 1368px) {
+    position: static;
+    height: initial;
+    max-width: none;
+    width: auto;
+  }
 `
 
 const Container = styled.nav<ISideBarContainer>`
@@ -129,8 +144,10 @@ const Botao = styled.button`
 `
 
 const SideBar: React.FC = () => {
+  const { isDrawerOpen } = useDrawer();
+
   return (
-    <Barra>
+    <Barra open={isDrawerOpen}>
       <Container>
         <Link to={'/'}>
           <Logo src={logoImagem} alt="" />
