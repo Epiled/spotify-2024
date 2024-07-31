@@ -37,6 +37,8 @@ const Botao = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: transform .25s;
 
   &:hover {
     transform: scale(1.05);

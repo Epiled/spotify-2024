@@ -40,6 +40,7 @@ const Botao = styled.button`
 
   &:hover {
     background-color: rgba(0,0,0,.7);
+    cursor: pointer;
 
     /* Estilos do ícone durante o hover */
       ${Icon} {
@@ -100,6 +101,8 @@ const LinkLogin = styled(Link)`
   min-height: 4.8rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  transition: transform .25s;
 
   &:hover {
     transform: scale(1.05);

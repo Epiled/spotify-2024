@@ -30,6 +30,8 @@ const Botao = styled.button`
   font-weight: 700;
   border: 0;
   min-block-size: 3.2rem;
+  cursor: pointer;
+  transition: transform .25s;
 
   &:hover {
     transform: scale(1.05);
