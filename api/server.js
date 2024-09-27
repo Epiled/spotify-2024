@@ -7,7 +7,6 @@ const middlewares = jsonServer.defaults();
 
 server.use(cors()); // Adiciona suporte a CORS
 server.use(middlewares);
-
 server.use(router);
 
 server.listen(3000, () => {
