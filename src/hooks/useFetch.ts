@@ -13,10 +13,8 @@ const useFecth = <T>({ url }: { url: string }) => {
         setDados(dados);
       } catch (error) {
         if (error instanceof Error) {
-          console.log("Erro ao buscar dados:", error);
           setErro(error.message);
         } else {
-          console.log("Erro desconhecido ao buscar dados:", error);
           setErro(`Erro desconhecido ${error}`);
         }
       }
