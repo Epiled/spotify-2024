@@ -5,9 +5,6 @@
       "dest": "/api/server.js",
       "headers": {
         "Access-Control-Allow-Origin": "*"
-      },
-      "config": {
-        "includeFiles": "db/playlist.json"
       }
     }
   ]
