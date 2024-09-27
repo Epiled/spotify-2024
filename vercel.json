@@ -1,18 +1,14 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": "db/playlist.json"
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/server.js"
+      "dest": "/api/server.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      },
+      "config": {
+        "includeFiles": "db/playlist.json"
+      }
     }
   ]
 }
