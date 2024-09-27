@@ -46,77 +46,77 @@
   "playlist": [
     {
       "categoria": "Boas festas",
-      "capa": "./assets/imgs/playlist/1.webp",
+      "capa": "/assets/imgs/playlist/1.webp",
       "cor": "rgb(0, 100, 80)"
     },
     {
       "categoria": "Feitos para você",
-      "capa": "./assets/imgs/playlist/2.webp",
+      "capa": "/assets/imgs/playlist/2.webp",
       "cor": "rgb(132, 0, 231)"
     },
     {
       "categoria": "Lançamentos",
-      "capa": "./assets/imgs/playlist/3.webp",
+      "capa": "/assets/imgs/playlist/3.webp",
       "cor": "rgb(30, 50, 100)"
     },
     {
       "categoria": "Creators",
-      "capa": "./assets/imgs/playlist/4.webp",
+      "capa": "/assets/imgs/playlist/4.webp",
       "cor": "rgb(140, 25, 50)"
     },
     {
       "categoria": "Para treinar",
-      "capa": "./assets/imgs/playlist/5.webp",
+      "capa": "/assets/imgs/playlist/5.webp",
       "cor": "rgb(232, 17, 91)"
     },
     {
       "categoria": "Podcasts",
-      "capa": "./assets/imgs/playlist/6.webp",
+      "capa": "/assets/imgs/playlist/6.webp",
       "cor": "rgb(83, 122, 161)"
     },
     {
       "categoria": "Sertanejo",
-      "capa": "./assets/imgs/playlist/7.webp",
+      "capa": "/assets/imgs/playlist/7.webp",
       "cor": "rgb(142, 102, 172)"
     },
     {
       "categoria": "Samba e pagode",
-      "capa": "./assets/imgs/playlist/8.webp",
+      "capa": "/assets/imgs/playlist/8.webp",
       "cor": "rgb(20, 138, 8)"
     },
     {
       "categoria": "Funk",
-      "capa": "./assets/imgs/playlist/9.webp",
+      "capa": "/assets/imgs/playlist/9.webp",
       "cor": "rgb(30, 50, 100)"
     },
     {
       "categoria": "MPB",
-      "capa": "./assets/imgs/playlist/10.webp",
+      "capa": "/assets/imgs/playlist/10.webp",
       "cor": "rgb(233, 20, 41)"
     },
     {
       "categoria": "Rock",
-      "capa": "./assets/imgs/playlist/11.webp",
+      "capa": "/assets/imgs/playlist/11.webp",
       "cor": "rgb(80, 55, 80)"
     },
     {
       "categoria": "Hip Hop",
-      "capa": "./assets/imgs/playlist/12.webp",
+      "capa": "/assets/imgs/playlist/12.webp",
       "cor": "rgb(216, 64, 0)"
     },
     {
       "categoria": "Indie",
-      "capa": "./assets/imgs/playlist/13.webp",
+      "capa": "/assets/imgs/playlist/13.webp",
       "cor": "rgb(186, 93, 7)"
     },
     {
       "categoria": "Relax",
-      "capa": "./assets/imgs/playlist/14.webp",
+      "capa": "/assets/imgs/playlist/14.webp",
       "cor": "rgb(0, 30, 80)"
     },
     {
       "categoria": "Música Latina",
-      "capa": "./assets/imgs/playlist/15.webp",
+      "capa": "/assets/imgs/playlist/15.webp",
       "cor": "rgb(60, 30, 80)"
     }
   ]
