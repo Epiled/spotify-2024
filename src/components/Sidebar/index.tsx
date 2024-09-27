@@ -4,7 +4,7 @@ import { faHome, faSearch, faBook, faPlus, faGlobe } from '@fortawesome/free-sol
 import { Link } from "react-router-dom";
 import Box from "./Box";
 import Extras from "./Extras";
-import logoImagem from '/assets/imgs/icons/logo-spotify.webp'
+import logoImagem from '/assets/imgs/icons/logo-spotify.svg'
 import IBoxSpace from "interfaces/IBoxSpace";
 import IFlex from "interfaces/IFlex";
 import ILinkItem from "interfaces/ILikeItem";
@@ -50,7 +50,6 @@ const Logo = styled.img`
   width: auto;
   height: 2.4rem;
   object-fit: contain;
-  align-self: flex-start;
 `
 
 const Lista = styled.ul`
