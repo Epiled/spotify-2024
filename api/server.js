@@ -9,8 +9,13 @@ server.use(cors()); // Adiciona suporte a CORS
 server.use(middlewares);
 server.use(router);
 
-server.listen(3000, () => {
-  console.log("JSON Server is running");
+// Definir as rotas para artists e playlist
+server.get('/api/artists', (req, res) => {
+  res.jsonp(router.db.get('artists').value());
+});
+
+server.get('/api/playlist', (req, res) => {
+  res.jsonp(router.db.get('playlist').value());
 });
 
 export default (req, res) => {
