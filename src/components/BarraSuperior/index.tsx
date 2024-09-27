@@ -1,10 +1,10 @@
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faChevronRight, faChevronLeft, faBars, faClose } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from "react-router-dom";
 import { useBusca } from "../../context/BuscaContext";
-import { useRef, useState } from "react";
 import { useDrawer } from "../../context/DrawerContext";
 
 const Icon = styled(FontAwesomeIcon)`
@@ -171,10 +171,10 @@ const BarraSuperior: React.FC = () => {
   return (
     <Cabecalho>
       <CabecalhoTop>
-        <Botao>
+        <Botao aria-label="Botão de avançar lista de pesquisa">
           <Icon icon={faChevronLeft} />
         </Botao>
-        <Botao>
+        <Botao aria-label="Botão de voltar lista de pesquisa">
           <Icon icon={faChevronRight} />
         </Botao>
 
@@ -196,10 +196,13 @@ const BarraSuperior: React.FC = () => {
         <LinkLogin to={'/'}>
           Entrar
         </LinkLogin>
-        <MenuButton to={'/'} ref={ref} onClick={() => {
-          toggleDrawer()
-          setIsOpen(!isOpen)
-        }}>
+        <MenuButton
+          aria-label="Botão de abrir e fechar menu"
+          to={'/'}
+          ref={ref} onClick={() => {
+            toggleDrawer()
+            setIsOpen(!isOpen)
+          }}>
           {!isOpen && <IconMenu icon={faBars} />}
           {isOpen && <IconClose icon={faClose} />}
         </MenuButton>

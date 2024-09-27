@@ -4,7 +4,7 @@ import { faHome, faSearch, faBook, faPlus, faGlobe } from '@fortawesome/free-sol
 import { Link } from "react-router-dom";
 import Box from "./Box";
 import Extras from "./Extras";
-import logoImagem from '/assets/imgs/icons/logo-spotify.png'
+import logoImagem from '/assets/imgs/icons/logo-spotify.webp'
 import IBoxSpace from "interfaces/IBoxSpace";
 import IFlex from "interfaces/IFlex";
 import ILinkItem from "interfaces/ILikeItem";
@@ -47,6 +47,7 @@ const Container = styled.nav<ISideBarContainer>`
 `
 
 const Logo = styled.img`
+  width: auto;
   height: 2.4rem;
   object-fit: contain;
   align-self: flex-start;
@@ -152,7 +153,7 @@ const SideBar: React.FC = () => {
     <Barra open={isDrawerOpen}>
       <Container>
         <Link to={'/'}>
-          <Logo src={logoImagem} alt="" />
+          <Logo src={logoImagem} alt="Logo Spotify" width={2362} height={708} />
         </Link>
         <Lista>
           <ItemLista>
@@ -180,7 +181,7 @@ const SideBar: React.FC = () => {
           </ItemLista>
 
           <ItemLista>
-            <LinkItem height={'auto'} to={'/'}>
+            <LinkItem height={'auto'} to={'/'} aria-label="Botão de adicionar biblioteca">
               <IconPlus icon={faPlus} />
             </LinkItem>
             <Lista>
