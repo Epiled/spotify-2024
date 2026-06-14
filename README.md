@@ -1,137 +1,136 @@
-# 🎧 Spotify 2024
+![Social Preview](https://github.com/user-attachments/assets/bf2e69b6-fe48-4c4d-b014-5488a9472270#vitrinedev)
 
-Projeto realizado dentro da imersão de Fron-End da <a href="https://cursos.alura.com.br/imersoes/aulas/aula-01-revisao-html-css-e-js-na-pratica-c118">Alura</a>.
+<h1 align="center"> 🎧 Spotify 2024 🎧 </h1>
 
-| :placard: Vitrine.Dev |     |
-| -------------  | --- |
-| :sparkles: Nome        | **Spotify 2024**
-| :label: Tecnologias | react, typescript, sass, styled components, json-server, html, css, js, node, vite, eslint
+![Vercel Deploy](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)
+![GitHub release](https://img.shields.io/github/v/release/Epiled/spotify-2024?style=for-the-badge)
+![GitHub license](https://img.shields.io/github/license/Epiled/spotify-2024?style=for-the-badge)
 
-<!-- Inserir imagem com a #vitrinedev ao final do link -->
+![GitHub last commit](https://img.shields.io/github/last-commit/Epiled/spotify-2024?style=for-the-badge)
+![Code Size](https://img.shields.io/github/languages/code-size/Epiled/spotify-2024?style=for-the-badge)
 
-![banner](https://github.com/user-attachments/assets/bf2e69b6-fe48-4c4d-b014-5488a9472270#vitrinedev)
+![React](https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=333333)
+![Typescript](https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node\.js-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
-<h2 id="detalhes-do-projeto"> 📃 Detalhes do projeto </h2>
+## 📑 Table of Contents
 
-O projeto consiste em recriar uma página do Spotify 2024, utilizando uma API funcional em JSON Server para fornecer dados sobre artistas e playlists. O bootcamp conta com a participação e mentoria dos anfitriões: 
+- [📑 Table of Contents](#-table-of-contents)
+- [📖 Overview](#-overview)
+- [🛠️ Technologies](#-technologies)
+- [⚡ Performance & PWA](#-performance--pwa)
+- [🚀 Demo](#-demo)
+- [📦 Install and Use](#-install-and-use)
+- [📂 File Structure](#-file-structure)
+- [🎨 Reference & Inspiration](#-reference--inspiration)
+- [👨‍💻 Author and Contact](#%E2%80%8D-author-and-contact)
 
-Guilherme Lima - CEO da Alura
+## 📖 Overview
 
-Fernanda Degolin - Desenvolvedora Front-end na Globo
+A Spotify-inspired web application developed during Alura's Spotify 2024 Front-End Immersion Bootcamp.
 
-Mayara Cardoso - Desenvolvedora Front-end no Itaú.
+The project recreates core Spotify interface features and consumes data from a mock REST API built with JSON Server, simulating artists, playlists, and music catalog interactions.
 
-![Badge](https://img.shields.io/github/last-commit/Epiled/spotify-2024?style=for-the-badge)
-![Badge](https://img.shields.io/github/languages/code-size/Epiled/spotify-2024?style=for-the-badge)
-![Badge](https://img.shields.io/github/languages/count/Epiled/spotify-2024?style=for-the-badge)
-![Bagde](https://img.shields.io/badge/repo%20status-Beta-cyan?style=for-the-badge)
-![Bagde](https://img.shields.io/github/v/release/Epiled/spotify-2024?style=for-the-badge)
-![Bagde](https://img.shields.io/github/license/Epiled/spotify-2024?style=for-the-badge)
+The bootcamp was led by experienced professionals from the Brazilian tech industry, providing hands-on experience with modern front-end development concepts and best practices.
 
-![Badge](https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Badge](https://img.shields.io/badge/-Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Badge](https://img.shields.io/badge/-Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Badge](https://img.shields.io/badge/-Styled%20Components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white)
-![Badge](https://img.shields.io/badge/-Json-000000?style=for-the-badge&logo=json&logoColor=white)
-![Badge](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![Badge](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Badge](https://img.shields.io/badge/-JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Badge](https://img.shields.io/badge/-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Badge](https://img.shields.io/badge/-Vite.js-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Badge](https://img.shields.io/badge/-ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+## 🛠 Technologies
 
-<h2> 📑 Tabela de Conteúdos </h2>
+The following technologies were used to build this project:
 
-<!--ts-->
-   * [Detalhes do projeto](#detalhes-do-projeto)
-   * [Tópicos Desenvolvidos](#topicos-curso)
-   * [Demonstração](#demonstracao)
-     - [Home](#home)
-   * [Pré-Requisito](#pre-requisito)
-   * [Instalação](#instalacao)
-   * [Como usar](#como-usar)
-     - [Subir Servidor](#subir-servidor)
-     - [Abrir Site](#abrir-site)
-   * [Tecnologias](#tecnologias)
-   * [Autor](#autor)
-<!--te-->
+- [React](https://react.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/en)
+- [Styled Components](https://styled-components.com/)
+- [Vite](https://vite.dev/)
 
-<h2 id="topicos-curso"> 👩‍🏫 Tópicos desenvolvidos</h2>
+## ⚡ Performance & PWA
 
-<!--ts-->
-* Site clone do Spotify 2024
-* Desenvolvimento de uma API
-* Adaptação para Mobile
-<!--te-->
+Comming Soon!
 
-<h2 id="demonstracao"> 👀 Demonstração </h2>
+<!-- ![Lighthouse Performance](./design/github/lighthouse-report/lighthouse-report.png) -->
 
-<h3 id="home"> Home </h3>
+## 🚀 Demo
+
+Access the live application below to interact with the interface and run your own performance tests
+
+Spotify 2024: [https://spotify-2024.vercel.app/](https://spotify-2024.vercel.app/)
+
+### Desktop
 
 https://github.com/user-attachments/assets/92ea209a-0a88-4d38-b76e-2abbb0cea97b
 
+### Mobile
+
 https://github.com/user-attachments/assets/096479a0-ff93-4a42-ba52-ba3f301a00ae
 
-<h2 id="pre-requisito"> 🚨 Pré-requisito </h2>
-<ul>
-  <li>Node</li>
-  <li>JSON Server</li>
-</ul>
+## 📦 Install and Use
 
-<h2 id="instalacao"> ⚙ Instalação </h2>
+**Prerequisites:** Node.js (v22.x) or higher installed.
 
-```
-1. git clone https://github.com/Epiled/spotify-2024.git
-2. cd spotify-2024
-3. npm install
+1. Clone the repository:
+```bash
+git clone https://github.com/Epiled/spotify-2024.git
+cd spotify-2024
 ```
 
-<h2 id="como-usar"> 👩‍🏫 Como usar </h2>
-
-<h3 id="subir-servidor"> Subir servidor </h3>
-
-```
-1. Abra no seu terminal o diretorio "db"
-2. json-server playlist.json
+2. Install the dependencies:
+```bash
+npm install
 ```
 
-<h3 id="abrir-site"> Abrir site </h3>
-
+3. Start the Mock Database (Terminal 1):
+Navigate to the `db` directory and initialize the local JSON server. *(Note: prefixing with `npx` ensures it runs even if not installed globally).*
+```bash
+cd db
+npx json-server playlist.json
 ```
-1. Abra no seu terminal o diretorio "spotify-2024"
-2. npm start
-2. Caso a url não abra sozinha acesse através deste caminho http://localhost:5173/
+
+4. Start the Application (Terminal 2):
+Open a **new terminal window** in the project root (`spotify-2024`) and run the development environment:
+```bash
+npm run dev
+```
+*If your browser does not open automatically, access the application at: [http://localhost:5173/](http://localhost:5173/)*
+
+5. (Optional) Generate a minified build for production:
+```bash
+npm run build
 ```
 
-<h2 id="tecnologias"> 🛠 Tecnologias </h2>
+## 📂 File Structure
 
-As seguintes tecnologias foram usadas na construção deste projeto:
+Below is the project architecture. All development is done inside the `src/` folder. The `dist/` folder is automatically generated by Vite and should not be edited manually.
 
-<ul>
-  <li><a href="https://react.dev/" target="_blank">React</a></li>
-  <li><a href="https://www.typescriptlang.org/" target="_blank">Typescript</a></li>
-  <li><a href="https://sass-lang.com/" target="_blank">Sass</a></li>
-  <li><a href="https://styled-components.com/" target="_blank">Styled Components</a></li>
-  <li><a href="https://www.npmjs.com/package/json-server" target="_blank">JSON Server</a></li>
-  <li><a href="https://www.w3schools.com/html/default.asp" target="_blank">HTML5</a></li>
-  <li><a href="https://www.w3schools.com/css/default.asp" target="_blank">CSS3</a></li>
-  <li><a href="https://www.w3schools.com/js/default.asp" target="_blank">JavaScript</a></li>
-  <li><a href="https://nodejs.org/en" target="_blank">Node.js</a></li>
-  <li><a href="https://vitejs.dev/" target="_blank">Vite</a></li>
-  <li><a href="https://eslint.org/" target="_blank">ESLint</a></li>
-</ul>
+```text
+spotify-2024/
+├── db/                 # Local mock data, static JSON collections, or database configurations
+├── src/                # Main source code
+│   ├── assets/         # Images and SVGs processed by the build pipeline
+│   ├── components/     # Reusable UI components (Atomic Design principles)
+│   ├── pages/          # Top-level view components representing application routes
+│   ├── styles/         # Global styles and theme definitions
+│   ├── App.tsx         # Root component
+│   └── main.tsx        # Application entry point
+├── public/             # Static assets (favicons, robots.txt)
+├── vite.config.ts      # Custom Vite configuration (plugins and aliases)
+├── tsconfig.json       # TypeScript strict configuration
+└── package.json        # Project dependencies and automation scripts
+```
 
-<h2 id="autor"> 👨‍💻 Autor </h2>
+## 🎨 Reference & Inspiration
+
+Comming Soon!
+
+## 👨‍💻 Author and Contact
 
 <a href="https://github.com/Epiled">
+  <img src="https://user-images.githubusercontent.com/55258483/178338085-2cea8bf2-6d0c-409a-9d0e-23359b7d303e.png" alt="Felindo">
+  <br />
+  <sub><b>Felipe De Andrade</b></sub>
+</a>
 
-![Felindo](https://user-images.githubusercontent.com/55258483/178338085-2cea8bf2-6d0c-409a-9d0e-23359b7d303e.png)
- <br />
- <sub><b>Felipe De Andrade</b></sub></a>
+Made with ❤️ by Felipe De Andrade 👋🏽 Get in touch!
 
-Feito com ❤️ por Felipe De Andrade 👋🏽 Entre em contato!
-
-[![Linkedin Badge](https://img.shields.io/badge/-Felipe-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/fademendonca/)](https://www.linkedin.com/in/fademendonca/)
-[![Gmail Badge](https://img.shields.io/badge/-felipe.deam98@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:felipe.deam98@gmail.com)](mailto:felipe.deam98@gmail.com)
-[![Instagram Badge](https://img.shields.io/badge/-Instagram-e4405f?style=flat-square&logo=Instagram&logoColor=white&link=https://www.instagram.com/felipe.deam/)](https://www.instagram.com/felipe.deam/)
-[![Codepen Badge](https://img.shields.io/badge/-Codepen-000000?style=flat-square&logo=Codepen&logoColor=white&link=https://codepen.io/epiled)](https://codepen.io/epiled)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fademendonca/)
+[![CodePen](https://img.shields.io/badge/CodePen-000000?style=for-the-badge&logo=codepen&logoColor=white)](https://codepen.io/epiled)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:felipe.deam98@gmail.com)
